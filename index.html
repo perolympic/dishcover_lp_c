@@ -4,35 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【Dishcover】あなたのためのグルメレコメンドサービス</title>
-    <style>
-        /* 基本スタイル */
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP', sans-serif;
-            color: #333;
-            line-height: 1.7;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .section {
-            padding: 40px 0;
-            text-align: center;
-        }
-        .section-title {
-            font-size: 32px;
-            font-weight: bold;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+<style>
+    /* --- 全体のスタイル --- */
+    body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Hiragino Sans', 'Noto Sans CJK JP', sans-serif;
+        color: #333;
+        background-color: #fff;
+        line-height: 1.7;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    .section {
+        padding: 40px 0;
+        text-align: center;
+    }
+    .section-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    .section-subtitle {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 50px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* --- ヘッダー / ファーストビュー --- */
+    .hero {
+        background-color: #f0f8ff; /* Add a solid background color as an alternative */
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 50px 0;
+        position: relative;
+        z-index: 1;
+    }
+    /* テキストやボタンをオーバーレイより上に配置 */
+    .hero .container {
+        position: relative;
+        z-index: 3;
+    }
+    .hero h1 {
+        font-size: 36px;
+        margin: 0 auto 20px auto;
+        font-weight: 900;
+        line-height: 1.4;
+        max-width: 750px;
+        color: black;
+    }
+    .hero p {
+        font-size: 18px;
+        margin-bottom: 40px;
+        color: black;
+    }
+    .cta-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #007BFF, #0056b3);
+        color: white;
+        padding: 18px 40px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    }
+    .cta-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    }
+
+        /* --- 課題提起セクション --- */
+        .problem-item-container {
             margin-top: 40px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-                /* --- 解決策セクション --- */
+        .problem-item {
+            background: #fff8f8;
+            border: 1px solid #ffdede;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 0 auto 20px auto;
+            max-width: 600px;
+        }
+        .problem-item p {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* --- 解決策セクション --- */
         .solution-section {
             background-color: #f8f9fa;
         }
@@ -81,6 +150,7 @@
         .after { background-color: #f0f8ff; }
         .after h3 { color: #007BFF; }
         .after .result { color: #007BFF; }
+
         /* --- 仕組みセクション --- */
         .steps {
             display: flex;
@@ -107,18 +177,42 @@
             margin-top: 0;
         }
 
+        /* --- フッター --- */
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 60px 0;
+        }
+        .footer .cta-button {
+            background: #fff;
+            color: #007BFF;
+            box-shadow: none;
+        }
+
+        /* --- スマートフォン向けの調整 --- */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 40px 0; /* スマホでは少し余白を詰める */
+            }
+            .hero h1 {
+                font-size: 32px;
+            }
+            .section {
+                padding: 30px 0;
+            }
+        }
     </style>
 </head>
 <body>
-
-    <div style="background-color: #f0f8ff; text-align: center; padding: 20px 20px;">
-        <h1 style="font-size: 36px; font-weight: 900; line-height: 1.4; color: black;">多数決でのレストラン評価よ、さようなら。<br><span style="color: #4dabf7;">好みの近い人から、</span>あなた専用のお店選び。</h1>
-        <p style="font-size: 18px; color: black;">もう行ってみてがっかりしない。あなたの「好き」が、新しいお店の評価基準になる。</p>
-        
+    <header class="hero">
+        <div class="container">
+            <h1>多数決でのレストラン評価よ、さようなら。<br><span style="color: #4dabf7;">好みの近い人から、</span>あなた専用のお店選び。</h1>
+            <p>もう行ってみてがっかりしない。あなたの「好き」が、新しいお店の評価基準になる。</p>
+        </div>
+    </header>
         <div class="container" style="margin-top: 10px;">
             <div data-tf-live="01K1TTTBB124N6G5FXPCRMZMEX" style="width: 100%; height: 400px;"></div>
         </div>
-    </div>
 
     <div class="section container">
         <h2 class="section-title">お店選びで、こんな経験ありませんか？</h2>
